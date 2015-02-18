@@ -36,7 +36,7 @@ public class LearningFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         glm = new GridLayoutManager(getActivity(),2);
-        adapter = new CardsAdapter();
+        adapter = new CardsAdapter(getResources().getStringArray(R.array.themes));
         recyclerView.setLayoutManager(glm);
         recyclerView.setAdapter(adapter);
     }

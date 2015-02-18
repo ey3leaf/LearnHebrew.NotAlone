@@ -7,11 +7,28 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_main">Learn Hebrew</string>
     <string name="title_section1">Learning</string>
-    <string name="title_section2">Dictionary</string>
-    <string name="title_section3">Chat</string>
+    <string name="title_section2">My Dictionary</string>
+    <string name="title_section3">Chat Roulette</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="themes">
+        <item>Alphabet</item>
+        <item>Numbers</item>
+        <item>Calendar</item>
+        <item>Body</item>
+        <item>Clothing</item>
+        <item>Family</item>
+        <item>Furniture</item>
+        <item>Kitchen</item>
+        <item>City</item>
+        <item>Transport</item>
+        <item>Nature</item>
+        <item>Weather</item>
+        <item>Plants</item>
+        <item>Animals</item>
+    </string-array>
+
 
 </resources>
