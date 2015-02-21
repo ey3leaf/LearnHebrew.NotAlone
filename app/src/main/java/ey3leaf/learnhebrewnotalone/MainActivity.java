@@ -1,7 +1,7 @@
 package ey3leaf.learnhebrewnotalone;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -42,29 +42,23 @@ public class MainActivity extends ActionBarActivity
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-        // update the main content by replacing fragments
-        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         switch (position) {
             case 0:
-                fragmentManager.beginTransaction()
-                        .replace(R.id.container, new LearningFragment())
-                        .commit();
+                fragmentTransaction.replace(R.id.container, new LearningFragment());
                 mTitle = getString(R.string.title_section1);
                 break;
             case 1:
-                fragmentManager.beginTransaction()
-                        .replace(R.id.container, new DictionaryFragment())
-                        .commit();
+                fragmentTransaction.replace(R.id.container, new DictionaryFragment());
                 mTitle = getString(R.string.title_section2);
                 break;
             case 2:
-                fragmentManager.beginTransaction()
-                        .replace(R.id.container, chatFragment)
-                        .commit();
+                fragmentTransaction.replace(R.id.container, chatFragment);
                 mTitle = getString(R.string.title_section3);
                 break;
         }
-
+        fragmentTransaction.commit();
     }
 
     public void restoreActionBar() {
@@ -102,4 +96,7 @@ public class MainActivity extends ActionBarActivity
         return super.onOptionsItemSelected(item);
     }
 
+    public MainActivity getMainActivity() {
+        return this;
+    }
 }

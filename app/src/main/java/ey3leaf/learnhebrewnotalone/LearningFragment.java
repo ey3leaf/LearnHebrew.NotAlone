@@ -1,10 +1,13 @@
 package ey3leaf.learnhebrewnotalone;
 
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,13 +18,17 @@ import android.view.ViewGroup;
  */
 public class LearningFragment extends Fragment {
     private RecyclerView recyclerView;
-    private GridLayoutManager glm;
-    private CardsAdapter adapter;
 
     public LearningFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,8 +42,25 @@ public class LearningFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        glm = new GridLayoutManager(getActivity(),2);
-        adapter = new CardsAdapter(getResources().getStringArray(R.array.themes));
+        GridLayoutManager glm = new GridLayoutManager(getActivity(), 2);
+        CardsAdapter adapter = new CardsAdapter(getActivity(), getResources().getStringArray(R.array.themes));
+        adapter.setItemClickListener(new CardsAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    setExitTransition(TransitionInflater.from(getActivity()).inflateTransition(android.R.transition.explode));
+
+                    WordsListFragment wordsListFragment = new WordsListFragment();
+                    wordsListFragment.setEnterTransition(TransitionInflater.from(getActivity()).inflateTransition(android.R.transition.explode));
+                    wordsListFragment.setPicturePosition(position);
+
+                    FragmentTransaction trans = getFragmentManager().beginTransaction();
+                    trans.replace(R.id.container, wordsListFragment);
+                    trans.addToBackStack(null);
+                    trans.commit();
+                }
+            }
+        });
         recyclerView.setLayoutManager(glm);
         recyclerView.setAdapter(adapter);
     }

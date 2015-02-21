@@ -29,6 +29,7 @@
         <item>Plants</item>
         <item>Animals</item>
     </string-array>
+    <string name="title_activity_words_list">WordsListActivity</string>
 
 
 </resources>
