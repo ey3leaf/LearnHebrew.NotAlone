@@ -1,6 +1,5 @@
 package ey3leaf.learnhebrewnotalone;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,12 +17,10 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.CardViewHold
     }
 
     private OnItemClickListener itemClickListener;
-    private Context context;
     private String[] themes;
-    private static int[] pictures;
+    private static int[] pictures, wordsArray;
 
-    public CardsAdapter(Context context, String[] themes) {
-        this.context = context;
+    public CardsAdapter(String[] themes) {
         this.themes = themes;
         pictures = new int[]{
                 R.drawable.alphabet,
@@ -41,10 +38,31 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.CardViewHold
                 R.drawable.weed,
                 R.drawable.animals
         };
+
+        wordsArray = new int[]{
+                R.array.alphabet,
+                R.array.numbers,
+                R.array.calendar,
+                R.array.anatomy,
+                R.array.clothing,
+                R.array.family,
+                R.array.furniture,
+                R.array.kitchen,
+                R.array.city,
+                R.array.transport,
+                R.array.nature,
+                R.array.weather,
+                R.array.weed,
+                R.array.animals
+        };
     }
 
     public static int[] getPictures() {
         return pictures;
+    }
+
+    public static int[] getWords() {
+        return wordsArray;
     }
 
     @Override
@@ -57,6 +75,7 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.CardViewHold
     @Override
     public void onBindViewHolder(CardViewHolder holder, final int position) {
         holder.imageView.setImageResource(pictures[position]);
+        holder.title.setText(themes[position]);
         holder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,7 +84,6 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.CardViewHold
                 }
             }
         });
-        holder.title.setText(themes[position]);
     }
 
     @Override

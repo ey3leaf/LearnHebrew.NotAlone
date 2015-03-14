@@ -43,7 +43,7 @@ public class LearningFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         GridLayoutManager glm = new GridLayoutManager(getActivity(), 2);
-        CardsAdapter adapter = new CardsAdapter(getActivity(), getResources().getStringArray(R.array.themes));
+        CardsAdapter adapter = new CardsAdapter(getResources().getStringArray(R.array.themes));
         adapter.setItemClickListener(new CardsAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
