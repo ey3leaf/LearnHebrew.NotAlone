@@ -22,9 +22,9 @@ public class WordsListAdapter extends RecyclerView.Adapter<WordsListAdapter.View
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        String[] splitted = wordsArray[position].split(";");
-        holder.original.setText(splitted[0]);
-        holder.translation.setText(splitted[1]);
+        String[] split = wordsArray[position].split(";");
+        holder.original.setText(split[0]);
+        holder.translation.setText(split[1]);
     }
 
     @Override

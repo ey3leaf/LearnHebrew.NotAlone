@@ -47,18 +47,16 @@ public class LearningFragment extends Fragment {
         adapter.setItemClickListener(new CardsAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
+                WordsListFragment wordsListFragment = new WordsListFragment();
+                wordsListFragment.setPicturePosition(position);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     setExitTransition(TransitionInflater.from(getActivity()).inflateTransition(android.R.transition.explode));
-
-                    WordsListFragment wordsListFragment = new WordsListFragment();
                     wordsListFragment.setEnterTransition(TransitionInflater.from(getActivity()).inflateTransition(android.R.transition.explode));
-                    wordsListFragment.setPicturePosition(position);
-
-                    FragmentTransaction trans = getFragmentManager().beginTransaction();
-                    trans.replace(R.id.container, wordsListFragment);
-                    trans.addToBackStack(null);
-                    trans.commit();
                 }
+                FragmentTransaction trans = getFragmentManager().beginTransaction();
+                trans.replace(R.id.container, wordsListFragment);
+                trans.addToBackStack(null);
+                trans.commit();
             }
         });
         recyclerView.setLayoutManager(glm);

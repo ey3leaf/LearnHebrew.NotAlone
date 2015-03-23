@@ -22,7 +22,7 @@ public class MainActivity extends ActionBarActivity
      */
     private CharSequence mTitle;
 
-    private ChatFragment chatFragment;
+    private ChatLoginFragment chatFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class MainActivity extends ActionBarActivity
         mNavigationDrawerFragment.setUp(R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
 
-        chatFragment = new ChatFragment();
+        chatFragment = new ChatLoginFragment();
     }
 
     @Override
